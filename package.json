@@ -1,0 +1,8 @@
+{
+  "name": "serverqa",
+  "version": "0.0.1",
+  "description": "servidor de proyecto QA",
+  "main": "index.js",
+  "author": "na-yz-jc-jv",
+  "license": "MIT"
+}
