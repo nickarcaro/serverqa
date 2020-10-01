@@ -5,9 +5,9 @@ const bcrypt = require("bcrypt-nodejs");
 const User = require("../models/user");
 
 function signUp(req, res) {
-  console.log("endpoint de registro");
+  return "endpoint de registro";
 }
-
+console.log(signUp());
 module.exports = {
   signUp,
 };
