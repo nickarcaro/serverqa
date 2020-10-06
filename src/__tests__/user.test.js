@@ -8,7 +8,11 @@ quinto paso: refactorizar codigo (escribir el componente original mas eficiente)
 fin del comunicado
 */
 const user = require("../controllers/user");
+
+// prueba de  funcion signup
 test("prueba de la funcion signup", () => {
   const { signUp } = user;
   expect(signUp()).toBe("endpoint de registro");
 });
+
+//prueba funcion login

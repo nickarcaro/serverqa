@@ -16,3 +16,10 @@ app.use(bodyParser.json());
 app.use(`/api/${API_VERSION}`, userRoutes);
 
 module.exports = app;
+
+/* comentarios respecto al funcioamiento del servidor 
+1. se crea el modelo en la carpeta models (donde se conecta a mongodb)
+2. se crea el controllador, que realiza la operación (antes debe importar el modelo)
+3. se crea la ruta en carpeta routes, importando el controllador  
+4. se importa en app, para ser usados en la api 
+*/
