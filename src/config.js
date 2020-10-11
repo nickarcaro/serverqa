@@ -1,3 +1,4 @@
+//datos configuracion de servidor
 const API_VERSION = "v1";
 const IP_SERVER = "localhost";
 const PORT_DB = 27017;
