@@ -14,7 +14,8 @@ const UserSchema = Schema({
     unique: true,
   },
   password: String,
-  role: String, // "vendedor / gerente"
+  role: String, // "vendedor / gerente",
+  active: Boolean,
   avatar: String,
 });
 

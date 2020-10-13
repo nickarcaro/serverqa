@@ -9,6 +9,7 @@ exports.createAccessToken = function (user) {
     id: user._id,
     name: user.name,
     lastname: user.lastname,
+    rut: user.rut,
     email: user.email,
     role: user.role,
     createToken: moment().unix(),
