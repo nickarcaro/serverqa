@@ -10,9 +10,6 @@ fin del comunicado
 const user = require("../controllers/user");
 
 // prueba de  funcion signup
-test("prueba de la funcion signup", () => {
-  const { signUp } = user;
-  expect(signUp()).toBe("endpoint de registro");
-});
+test("prueba de la funcion signup", () => {});
 
 //prueba funcion login
