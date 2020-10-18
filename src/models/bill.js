@@ -3,6 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BillSchema = Schema({
+  idBill: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
   fecha: { type: Date, default: Date.now },
   nombreSoc: String,
   rut: String,
