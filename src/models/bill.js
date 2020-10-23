@@ -18,13 +18,16 @@ const BillSchema = Schema({
   telefono: String,
   medioPago: String,
   formaPago: String,
-  data: [
+  billRef: [
     {
       cant: Number,
       detail: String,
       punitary: Number,
     },
   ],
+  neto: Number,
+  iva: Number,
+  total: Number
   creador: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

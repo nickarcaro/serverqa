@@ -1,5 +1,5 @@
 const express = require("express");
-var cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const { API_VERSION } = require("./config");
 
@@ -8,15 +8,29 @@ app.use(cors());
 
 // carga de rutas
 const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
+const billRoutes = require("./routes/bill");
 
 //body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Configure Header HTTP
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
 // Ruteo
+app.use(`/api/${API_VERSION}`, authRoutes);
 app.use(`/api/${API_VERSION}`, userRoutes);
+app.use(`/api/${API_VERSION}`, billRoutes);
 
 module.exports = app;
 

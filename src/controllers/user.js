@@ -17,6 +17,8 @@ function signUp(req, res) {
   user.rut = rut;
   user.email = email.toLowerCase();
   user.role = "vendedor"; //role vendedor por defecto
+  user.active = false;
+
   if (!password || !repeatPassword) {
     res.status(404).send({ message: "Las contraseñas son obligatorias." });
   } else {
@@ -84,6 +86,7 @@ function signIn(req, res) {
   });
 }
 
+//actaulizar usuario
 async function updateUser(req, res) {
   let userData = req.body;
   userData.email = req.body.email.toLowerCase();
@@ -114,6 +117,7 @@ async function updateUser(req, res) {
   });
 }
 
+//activar usuario
 function activateUser(req, res) {
   const { id } = req.params;
   const { active } = req.body;
@@ -137,9 +141,65 @@ function activateUser(req, res) {
   });
 }
 
+//retornar usuarios
+function getUsers(req, res) {
+  User.find().then((users) => {
+    if (!users) {
+      res.status(404).send({ message: "No se ha encontrado ningun usuario." });
+    } else {
+      res.status(200).send({ users });
+    }
+  });
+}
+
+//registro de gerente
+
+function signUpManager(req, res) {
+  const user = new User();
+
+  const { name, lastname, email, role, rut, password } = req.body;
+  user.name = name;
+  user.lastname = lastname;
+  user.email = email.toLowerCase();
+  user.role = role;
+  user.active = true;
+  user.rut = rut;
+
+  if (!password) {
+    res.status(500).send({ message: "La contraseña es obligatoria. " });
+  } else {
+    bcrypt.hash(password, null, null, (err, hash) => {
+      if (err) {
+        res.status(500).send({ message: "Error al encriptar la contraseña." });
+      } else {
+        user.password = hash;
+
+        user.save((err, userStored) => {
+          if (err) {
+            res.status(500).send({ message: "El usuario ya existe." });
+          } else {
+            if (!userStored) {
+              res
+                .status(500)
+                .send({ message: "Error al crear el nuevo usuario." });
+            } else {
+              // res.status(200).send({ user: userStored });
+              res
+                .status(200)
+                .send({ message: "Usuario creado correctamente." });
+            }
+          }
+        });
+      }
+    });
+  }
+}
+
 module.exports = {
   signUp,
   signIn,
   activateUser,
   updateUser,
+  getUsers,
+  signUpManager,
 };
