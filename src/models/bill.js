@@ -27,7 +27,7 @@ const BillSchema = Schema({
   ],
   neto: Number,
   iva: Number,
-  total: Number
+  total: Number,
   creador: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
