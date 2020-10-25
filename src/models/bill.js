@@ -3,11 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BillSchema = Schema({
-  idBill: {
-    type: Number,
-    unique: true,
-    required: true,
-  },
   fecha: { type: Date, default: Date.now },
   nombreSoc: String,
   rut: String,
@@ -27,11 +22,7 @@ const BillSchema = Schema({
   ],
   neto: Number,
   iva: Number,
-  total: Number
-  creador: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  total: Number,
 });
 //crear metodo de calcular los valores
 

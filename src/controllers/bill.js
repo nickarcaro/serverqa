@@ -3,6 +3,7 @@ const Bill = require("../models/bill");
 function addBill(req, res) {
   const body = req.body;
   const bill = new Bill(body);
+  console.log(body);
   bill.save((err, billStored) => {
     if (err) {
       res.status(400).send({
