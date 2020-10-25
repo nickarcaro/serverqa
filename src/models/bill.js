@@ -23,6 +23,13 @@ const BillSchema = Schema({
   neto: Number,
   iva: Number,
   total: Number,
+<<<<<<< HEAD
+=======
+  creador: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+>>>>>>> 21d298993f21946b234a6b7bb9c5727afec65308
 });
 //crear metodo de calcular los valores
 
