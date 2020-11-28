@@ -6,6 +6,7 @@ const api = express.Router();
 
 api.post("/sign-up", UserController.signUp);
 api.post("/sign-in", UserController.signIn);
+api.get("/users-active", [md_auth.ensureAuth], UserController.getUsersActive);
 
 api.put(
   "/activate-user/:id",
